@@ -1,33 +1,28 @@
 # Artificial Intelligence Submission
 
 Ini adalah deskripsi singkat dari proyek AI yang dilakukan oleh kelompok ini.
-<br/>
 
 ## Anggota Kelompok
 
-- Nama Anggota 1
+- Riecky Syarief Poerwadiredja
 - Nama Anggota 2
 - Nama Anggota 3
 - Nama Anggota 4
-  <br/>
 
 ## Deskripsi Proyek
 
 Deskripsi singkat mengenai proyek ini.
-<br/>
 
 ## Teknologi yang Digunakan
 
-Python 3.7.6
-NLTK Library
-<br/>
+- Python 3.7.6
+- NLTK Library
 
 ## Cara Menjalankan Proyek
 
-Install Python 3.7.6.
-Install NLTK library dengan menggunakan pip command pip install nltk.
-Jalankan file main.py untuk memulai proyek.
-<br/>
+- 1. Install Python 3.7.6.
+- 2. Install NLTK library dengan menggunakan pip command pip install nltk.
+- 3. Jalankan file main.py untuk memulai proyek.
 
 ## Struktur Proyek
 
@@ -48,8 +43,6 @@ Jalankan file main.py untuk memulai proyek.
 ├── README.md
 └── requirements.txt
 ```
-
-<br/>
 
 ## Referensi
 
