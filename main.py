@@ -6,17 +6,29 @@ from nltk.probability import FreqDist
 from utils.cleaners import indexCleaner
 from utils.plot import plot
 from utils.analyze import analyze
+from utils.readFile import readCsv
 
-text = "Great music service, the audio is high quality and the app is easy to use. Also very quick and friendly support."
+text = readCsv(['Review'],'./data/dataset.csv') 
+text = text.tolist()
 
 def cleanWord(text):
     # Get Word from text
-    word = word_tokenize(text)
+    words = []
+    for sent in text:
+        word = word_tokenize(sent)
+        words.append(word)
+        
+    #  Merubah array dalam array ke 1 array
+    flattened_words = []
+    for wordArray in words:
+        for word in wordArray:
+            flattened_words.append(word)
+    
     # Clean Word
-    cleanWord = indexCleaner(word)
+    cleanWord = indexCleaner(flattened_words)
     # Show Plot
     fd = FreqDist(cleanWord)
-    plot(30,fd)
+    plot(50,fd)
     # Analyze
     analyzeResult = analyze(cleanWord)
     
@@ -25,16 +37,26 @@ def cleanWord(text):
         print(res['score'])
         
         
-    # Tampilkan hasli analisis
+    # Tampilkan hasil analisis plot
 
     
 cleanWord(text)
 
 def cleanSent(text):
+    sents = []
     # get sent from text
-    sent = sent_tokenize(text)
+    for sent in text:
+        sent = sent_tokenize(sent)
+        sents.append(sent)
+    print(sents)
+    #  Merubah array dalam array ke 1 array
+    flattened_sents = []
+    for sendArray in sents:
+        for sent in sendArray:
+            flattened_sents.append(sent)
+            
     # Clean Sent
-    cleanSent = indexCleaner(sent)
+    cleanSent = indexCleaner(flattened_sents)
     # Show Plot
     fd = FreqDist(cleanSent)
     plot(30,fd)
@@ -44,6 +66,7 @@ def cleanSent(text):
     for res in analyzeResult:        
         print(res['text'])
         print(res['score'])
-    # Tampilkan hasli analisis
+        
+    # Tampilkan hasil analisis plot
 
 cleanSent(text)
