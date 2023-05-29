@@ -13,9 +13,18 @@ def analyze(data=[]):
     allScore = []
     for text in data:
         score = sia.polarity_scores(text)
+        
+        # Mendapatkan skor positif, negatif, dan netral
+        positive_score = score['pos']
+        negative_score = score['neg']
+        neutral_score = score['neu']
+
         objectScore = {
             "text": text,
-            "score": score
+            "score": score,
+            "neutral_score": neutral_score,
+            "negative_score": negative_score,
+            "positive_score": positive_score
         }
         allScore.append(objectScore)
     return allScore
