@@ -28,3 +28,33 @@ def analyze(data=[]):
         }
         allScore.append(objectScore)
     return allScore
+
+from nltk.sentiment import SentimentIntensityAnalyzer
+
+def analyze_sentence(data):
+    if not data:
+        print("<!> Error: Data kosong.")
+        return None
+        
+    sid = SentimentIntensityAnalyzer()
+    all_scores = []
+    
+    for text in data:
+        score = sid.polarity_scores(text)
+        
+        # Mendapatkan skor positif, negatif, dan netral
+        positive_score = score['pos']
+        negative_score = score['neg']
+        neutral_score = score['neu']
+
+        object_score = {
+            "text": text,
+            "score": score,
+            "neutral_score": neutral_score,
+            "negative_score": negative_score,
+            "positive_score": positive_score
+        }
+        
+        all_scores.append(object_score)
+    
+    return all_scores
