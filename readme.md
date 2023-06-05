@@ -5,9 +5,9 @@ Ini adalah deskripsi singkat dari proyek AI yang dilakukan oleh kelompok ini.
 ## Anggota Kelompok
 
 - Riecky Syarief Poerwadiredja
-- Nama Anggota 2
-- Nama Anggota 3
-- Nama Anggota 4
+- Achmad Septian Nabawi
+- Jason Syahputra
+- Muhammad Athar Qamarul Arifin
 
 ## Deskripsi Proyek
 
@@ -22,28 +22,27 @@ Deskripsi singkat mengenai proyek ini.
 
 - 1. Install Python 3.7.6.
 - 2. Install NLTK library dengan menggunakan pip command pip install nltk.
-- 3. Jalankan file main.py untuk memulai proyek.
+- 3. Jalankan file main.py untuk memulai proyek. `python main.py`
 
 ## Struktur Proyek
 
 ```
 ├── data/
-│   ├── dataset_1.csv
-│   ├── dataset_2.csv
-│   └── ...
-├── models/
-│   ├── model_1.pkl
-│   ├── model_2.pkl
-│   └── ...
+│   ├── dataset.csv
+├── model/
+│   └── model.pickle
 ├── utils/
-│   ├── preprocessing.py
-│   ├── feature_extraction.py
-│   └── ...
+│   ├── menu
+|         ├── input.py
+|         └── menu.py
+│   ├── cleaners.py
+|   ├── index.py
+|   └── makePickle.py
 ├── main.py
 ├── README.md
 └── requirements.txt
 ```
 
-## Referensi
+## Lisensi
 
-Daftar referensi yang digunakan dalam proyek ini.
+Distributed under the MIT License.
