@@ -1,11 +1,10 @@
 import pandas as pd
 # Utils File
-from utils.readFile import readCsv
 from utils.menu.menu import menu, list_menu, exit_app
 from utils.menu.input import getInput, getInputInt
 # Main File
-from utils.index import getWord, getSent
-
+from utils.index import getAnalyzeResult
+from utils.analyze import analyzeReview
 dataset = pd.read_csv("./data/dataset.csv")
 
 def main():
@@ -24,11 +23,11 @@ def main():
                 user_choice = 0
             if(user_choice == 1):
                 print("========== Write new review ==========")
-                # getWord(dataset)   
-                getSent(dataset)
+                getAnalyzeResult(dataset)
                 user_choice = 0
             if(user_choice == 2):
-                print("2. Analyze review")
+                print("========== Analyze review ==========")
+                analyzeReview('./model/model.pickle',"i'm not happy the movie!")
                 user_choice = 0
             if(user_choice == 3):
                 exit_app()

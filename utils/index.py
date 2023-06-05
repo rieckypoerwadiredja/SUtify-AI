@@ -1,13 +1,10 @@
 # NLTK
-from nltk import word_tokenize, sent_tokenize
+from nltk import word_tokenize
 from nltk.probability import FreqDist
 
 # Utils
 from utils.cleaners import indexCleaner
-from utils.plot import plot
-from utils.analyze import analyze, analyze_sentence
-from utils.readFile import readCsv
-from utils.classify import classify, classify_sentence
+from utils.makePickle import makePickel
 
 
 def getWord(dataset):
@@ -26,7 +23,6 @@ def getWord(dataset):
         wordsLabel.append((word, lab))
 
     print(wordsLabel)
-    # return wordsLabel
     # TODO: Memisahkan kata dalam kalimat berdasarkan jenisnya
     positiveWords = []
     negativeWords = []
@@ -63,29 +59,23 @@ def getWord(dataset):
     # print(words)
     return words
     
-def getSent(dataset):
-     # TODO: Get Sent from text     
-    sents = dataset['Review']
-
-    # TODO: Ambil kata unik
-    all_unik_sents = FreqDist(sents)
-    
-    # TODO: Clean Word
-    cleanSent = indexCleaner(all_unik_sents)
-    
+def getAnalyzeResult(dataset):
     feature_set = getWord(dataset)
-    print(feature_set)
+    # print(feature_set)
     
     # # TODO: Traning & testing
     import random
     
     random.shuffle(feature_set)
     train_count = int(len(feature_set)*0.9) # Mengambil 9 dari 10 dataset
-    train_data = feature_set[:train_count] 
-    test_data = feature_set[train_count:]
+    train_data = feature_set[:train_count] # Mengambil dara dari awal smp ke limit untuk train data
+    test_data = feature_set[train_count:] # Mengambil mengambil dari sisa (limit data traning smp selesai)
     
     from  nltk.classify import NaiveBayesClassifier, accuracy
     
     classifier = NaiveBayesClassifier.train(train_data)
     classifier.show_most_informative_features(10)
     print(accuracy(classifier, test_data)*100)   
+    
+    makePickel('./model/model.pickle',classifier)
+    
