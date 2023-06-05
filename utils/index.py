@@ -77,5 +77,5 @@ def getAnalyzeResult(dataset):
     classifier.show_most_informative_features(10)
     print(accuracy(classifier, test_data)*100)   
     
-    makePickel('./model/model.pickle',classifier)
+    makePickel('./model/model.pickle',classifier,'./model')
     

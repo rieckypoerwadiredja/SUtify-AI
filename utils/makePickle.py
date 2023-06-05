@@ -1,8 +1,15 @@
 import pickle
-from nltk.probability import FreqDist
-from nltk.tokenize import word_tokenize
+import os
 
-def makePickel(dir,classifier):
+def dirValidation(dir):
+    if os.path.exists(dir): # File nya udh ada belum ?
+        return True
+    else:
+        os.makedirs(dir) # dibuat dulu direktorinya, baru keluar
+        return True
+    
+def makePickel(dir,classifier,folder):
+    dirValidation(folder)
     with open(dir, 'wb') as file:
         pickle.dump(classifier, file)
     

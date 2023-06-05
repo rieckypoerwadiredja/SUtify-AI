@@ -4,7 +4,16 @@ from nltk.tokenize import word_tokenize
 
 def analyzeReview(dir,cek):
     classifier_file = open(dir,"rb")
-    classifier = pickle.load(classifier_file)
+    try:
+        classifier = pickle.load(classifier_file)
+        if classifier:
+            pass
+        else: 
+            print("The Pickle file is empty, please enter the results of the analysis first")
+            return
+    except:
+        print("The Pickle file is empty, please enter the results of the analysis first")
+        return
     classifier_file.close()
         
     res = classifier.classify(FreqDist(word_tokenize(cek)))
