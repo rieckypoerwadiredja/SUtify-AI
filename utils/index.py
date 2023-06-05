@@ -25,8 +25,8 @@ def getWord(dataset):
         word = word_tokenize(rev)
         wordsLabel.append((word, lab))
 
-    # print(wordsLabel[0][0])
-    
+    print(wordsLabel)
+    # return wordsLabel
     # TODO: Memisahkan kata dalam kalimat berdasarkan jenisnya
     positiveWords = []
     negativeWords = []
@@ -40,24 +40,26 @@ def getWord(dataset):
                 negativeWords.append(word)
    
     # TODO: Ambil kata unik
-    all_unik_positive_words = FreqDist(positiveWords).keys()
-    print(all_unik_positive_words)
-    
+    all_unik_positive_words = FreqDist(positiveWords)
+    # print("Kotor pos",len(all_unik_positive_words))
     # TODO: Clean Word
     cleanPositiveWord = indexCleaner(all_unik_positive_words)
+    # print("bersih pos",len(cleanPositiveWord))
     
     # TODO: Ambil kata unik
-    all_unik_negative_words = FreqDist(positiveWords).keys()
+    all_unik_negative_words = FreqDist(positiveWords)
+    # print("kotor neg",len(all_unik_negative_words))
     
     # TODO: Clean Word
     cleanNegativeWord = indexCleaner(all_unik_negative_words)
+    # print("kotor neg",len(cleanNegativeWord))
     
     words = []
     # TODO: Membari label tiap jenis
     for word in cleanPositiveWord:
-        words.append((word,"positive"))
+        words.append(({word:True},"positive"))
     for word in cleanNegativeWord:
-        words.append((word,"negative"))
+        words.append(({word:True},"negative"))
     # print(words)
     return words
     
@@ -66,15 +68,15 @@ def getSent(dataset):
     sents = dataset['Review']
 
     # TODO: Ambil kata unik
-    all_unik_sents = FreqDist(sents).keys()
-    # print(all_unik_sents)
+    all_unik_sents = FreqDist(sents)
     
     # TODO: Clean Word
     cleanSent = indexCleaner(all_unik_sents)
+    
     feature_set = getWord(dataset)
     print(feature_set)
     
-    # TODO: Traning & testing
+    # # TODO: Traning & testing
     import random
     
     random.shuffle(feature_set)
