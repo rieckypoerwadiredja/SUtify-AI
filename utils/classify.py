@@ -1,4 +1,4 @@
-def classify(analyzeResult):
+def classify_word(analyzeResult):
     negative_words = []
     neutral_words = []
     positive_words = []
