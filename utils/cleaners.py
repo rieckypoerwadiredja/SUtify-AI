@@ -5,6 +5,7 @@ from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer
 
 def indexCleaner(wordList = []):
+    print(wordList)
     cleanWord = deletePunctuation(wordList)
     cleanWord = deleteStopWord(cleanWord)
     cleanWord = snowballStemmer(cleanWord)

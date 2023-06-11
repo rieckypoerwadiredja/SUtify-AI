@@ -24,10 +24,12 @@ def main():
             if(user_choice == 1):
                 print("========== Write new review ==========")
                 getAnalyzeResult(dataset)
+                review = getInput("Tes input \n")
+                # "i'm not happy the movie!"
+                analyzeReview('./model/model.pickle',review)
                 user_choice = 0
             if(user_choice == 2):
                 print("========== Analyze review ==========")
-                analyzeReview('./model/model.pickle',"i'm not happy the movie!")
                 user_choice = 0
             if(user_choice == 3):
                 exit_app()

@@ -22,7 +22,7 @@ def getWord(dataset):
         word = word_tokenize(rev)
         wordsLabel.append((word, lab))
 
-    print(wordsLabel)
+    # print(wordsLabel)
     # TODO: Memisahkan kata dalam kalimat berdasarkan jenisnya
     positiveWords = []
     negativeWords = []
