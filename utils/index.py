@@ -5,7 +5,7 @@ from nltk.probability import FreqDist
 # Utils
 from utils.cleaners import indexCleaner
 from utils.makePickle import makePickel
-
+from utils.analyze import analyzeReview
 
 def getWord(dataset):
     # TODO: Get Word from text
@@ -59,7 +59,7 @@ def getWord(dataset):
     # print(words)
     return words
     
-def getAnalyzeResult(dataset):
+def getAnalyzeResult(dataset,current_review):
     feature_set = getWord(dataset)
     # print(feature_set)
     
@@ -75,7 +75,9 @@ def getAnalyzeResult(dataset):
     
     classifier = NaiveBayesClassifier.train(train_data)
     classifier.show_most_informative_features(10)
-    print(accuracy(classifier, test_data)*100)   
-    
+    print(f"Accuracy Percentage: {accuracy(classifier, test_data)*100} %")   
+    print("Traning Completed!")
     makePickel('./model/model.pickle',classifier,'./model')
+    review = current_review
+    analyzeReview('./model/model.pickle',review)
     

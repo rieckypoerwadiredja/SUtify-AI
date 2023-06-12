@@ -1,21 +1,9 @@
 import keyboard
-import os
-import time
-
+from utils.checkFileExists import check_file_exists
+from utils.enterToContinue import enter_to_continue
 current_review = "The new update is dissapointing"
 dataset_name = "dataset.csv"
 
-def check_file_exists(file_name):
-    project_dir = os.getcwd()  # Mendapatkan direktori projek saat ini
-    data_dir = os.path.join(project_dir, "data")  # Beralih ke direktori "./data" di dalam direktori projek
-    file_path = os.path.join(data_dir, file_name)  # Membangun path lengkap berdasarkan direktori "./data" dan nama file
-    if os.path.exists(file_path):
-        print("files have been found")
-        time.sleep(2)
-        print("\n")
-    else:
-        print("file not found\nMake sure the dataset.csv file already exists in the ./data/dataset.csv directory")
-        exit()
         
 def list_menu():
     print("0. List menu")
@@ -29,13 +17,21 @@ def menu():
     print("\n")
     print(f"Current Review: {current_review}")
     print("<!> Please make sure to prepare a dataset in CSV format inside the 'data' folder named 'dataset'.")
-    print("Is the file already available? (Press 'enter' to continue)")
-    keyboard.wait("enter")
-    print("\n")
-    # TODO: Validasi apakah file sudah ada ?
-    check_file_exists(dataset_name)
-    # TODO: Berikan list menu
-    list_menu()
+    # ? Deley until enter
+    enter_to_continue("Is the file already available? (Press 'enter' to continue)")
+    
+    # TODO: Validasi apakah file dataset sudah ada ?
+    is_dataset_exists = check_file_exists(dataset_name,"data")
+    if is_dataset_exists == False:
+        exit()
+    
+    print("\n")    
+    # TODO: Apakah model sudah ada ?
+    print("<!> Please make sure to prepare a model in pickle format inside the 'data' folder named 'model.pickle'.")
+    is_model_exists = check_file_exists("model.pickle","model")
+    if is_model_exists == False: # Kalo belum ada model kita buat dulu
+        print("Please make model.pickel file")
+        exit()
 
 def exit_app():
     print("Exit SUtify App \n Bay-Bay!👋👋👋")
