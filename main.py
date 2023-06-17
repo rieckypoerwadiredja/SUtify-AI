@@ -16,9 +16,10 @@ def main():
     # TODO: Berikan list menu & opening
     menu()
     dataset = pd.read_csv("./data/dataset.csv")
-
+    
     # TODO: Apakah model ada isinya ?
     is_model_empty = check_file_empty("./model/model.pickle")
+    
     if is_model_empty == True: # Kalo belum ada isi pada file model kita run dulu dulu
         getAnalyzeResult(dataset,current_review)
     print("\n")

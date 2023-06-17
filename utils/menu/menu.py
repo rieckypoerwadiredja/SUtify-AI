@@ -30,8 +30,8 @@ def menu():
     print("<!> Please make sure to prepare a model in pickle format inside the 'data' folder named 'model.pickle'.")
     is_model_exists = check_file_exists("model.pickle","model")
     if is_model_exists == False: # Kalo belum ada model kita buat dulu
-        print("Please make model.pickel file")
-        exit()
+        with open("./model/model.pickle", 'wb') as file:
+            pass
 
 def exit_app():
     print("Exit SUtify App \n Bay-Bay!👋👋👋")
